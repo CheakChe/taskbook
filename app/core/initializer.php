@@ -1,11 +1,11 @@
 <?php
 spl_autoload_register(static function ($item) {
-    if (file_exists('App\\Components\\' . ucfirst($item) . '.php')) {
-        include_once 'App\\Components\\' . ucfirst($item) . '.php';
-    } elseif (file_exists("App\\Core\\$item.php")) {
-        include_once "App\\Core\\$item.php";
-    } elseif (file_exists("App\\Models\\$item.php")) {
-        include_once "App\\Models\\$item.php";
+    if (file_exists('app/components/' . ucfirst($item) . '.php')) {
+        include_once 'app/components/' . ucfirst($item) . '.php';
+    } elseif (file_exists("app/core/$item.php")) {
+        include_once "app/core/$item.php";
+    } elseif (file_exists("app/models/$item.php")) {
+        include_once "app/models/$item.php";
     } else {
         Log::writeLog("Файл $item не был найден.");
     }
