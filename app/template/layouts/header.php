@@ -20,7 +20,7 @@
                href="/">На главную</a>
             <?php if (!isset($_SESSION['user'])): ?>
                 <a class="btn btn-dark" href="/users">Авторизиция</a>
-            <?php elseif (!empty($vars['nameUser'])): ?>
+            <?php else: ?>
                 <a class="btn btn-dark" href="/users/logout">Выход</a>
             <?php endif; ?>
         </div>
