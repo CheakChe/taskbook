@@ -8,6 +8,7 @@ spl_autoload_register(static function ($item) {
         include_once "app/models/$item.php";
     } else {
         Log::writeLog("Файл $item не был найден.");
+        header('Location: /error');
     }
 });
 session_start();
