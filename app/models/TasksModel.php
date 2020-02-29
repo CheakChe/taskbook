@@ -25,12 +25,19 @@ class TasksModel extends Model
                         ");
     }
 
-    public function save($vars)
+    public function save($vars): void
     {
         $this->query("UPDATE `tasks` SET 
                         `name`='{$vars['name']}',
                         `email`='{$vars['email']}',
-                        `task`='{$vars['task']}'
+                        `task`='{$vars['task']}',
+                        `status`='{$vars['status']}',
+                        `change_admin`='{$vars['change_admin']}'
                         WHERE `id`='{$vars['id']}'");
+    }
+
+    public function textTask($task_id)
+    {
+        return $this->fetch_assoc("SELECT task FROM `tasks` WHERE `id`='$task_id'")['task'];
     }
 }

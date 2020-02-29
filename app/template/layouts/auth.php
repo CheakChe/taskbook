@@ -13,7 +13,7 @@
                 <input required type="password" name="password" placeholder="Пароль">
             </div>
             <div class="auth__element m-2 text-center">
-                <button type="submit" name="auth">Авторизироваться</button>
+                <button class="btn btn-dark" type="submit" name="auth">Авторизироваться</button>
             </div>
         </form>
     </div>

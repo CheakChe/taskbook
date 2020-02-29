@@ -1,5 +1,36 @@
-@import "config";
+$brightness: brightness(0.8);
 
-button:hover {
+button:hover,
+a:hover {
   filter: $brightness;
+}
+
+.tasks {
+  &__element {
+    border-bottom: 1px solid #292929;
+  }
+
+  &__sorts button,
+  &__item input {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+header,
+.tasks {
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid #919191;
+  background: none;
+  padding: 0 5px;
+}
+
+.paging {
+  margin-bottom: 20px;
 }
