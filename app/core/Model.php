@@ -31,7 +31,7 @@ class Model
         } catch (PDOException $exception) {
             die(Log::writeLog('Ошибка: ' . $e->getMessage()));
         }
-        return $fetch_assoc->fetch(PDO::FETCH_ASSOC)['count'];
+        return $fetch_assoc->fetch(PDO::FETCH_ASSOC);
     }
 
     protected function query($query)

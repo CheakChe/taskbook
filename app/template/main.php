@@ -27,24 +27,24 @@
                                     </button>
                                 </div>
                             <?php endif; ?>
-                            <input type="text" <?= ($_COOKIE['user'] ?? 'readonly') ?> placeholder="Имя"
+                            <input required type="text" <?= ($_SESSION['user'] ?? 'readonly') ?> placeholder="Имя"
                                    name="name[<?= $item['id'] ?>][]"
                                    value="<?= $item['name'] ?>">
-                            <input type="email" <?= ($_COOKIE['user'] ?? 'readonly') ?> placeholder="Почта"
+                            <input required type="email" <?= ($_SESSION['user'] ?? 'readonly') ?> placeholder="Почта"
                                    name="email[<?= $item['id'] ?>][]"
                                    value="<?= $item['email'] ?>">
-                            <input type="text" <?= ($_COOKIE['user'] ?? 'readonly') ?> placeholder="Задача"
+                            <input required type="text" <?= ($_SESSION['user'] ?? 'readonly') ?> placeholder="Задача"
                                    name="task[<?= $item['id'] ?>][]"
                                    value="<?= $item['task'] ?>">
                         </div>
-                        <?php if (isset($_COOKIE['user'])): ?>
+                        <?php if (isset($_SESSION['user'])): ?>
                             <button class="btn btn-dark align-self-end" type="submit" name="save"
                                     value="<?= $item['id'] ?>">Сохранить
                             </button>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
-                <?php if (isset($_COOKIE['user'])): ?>
+                <?php if (isset($_SESSION['user'])): ?>
                     <div class="tasks__button-save text-center mt-5">
                         <button class="btn btn-dark" type="submit" name="save-all">Сохранить всё</button>
                     </div>

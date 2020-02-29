@@ -1,6 +1,5 @@
 <?php
 
-
 class Router
 {
     private $url;
@@ -24,7 +23,7 @@ class Router
     {
         $vars[] = (new Controller())->init();
 
-        if ($this->url[1] === '' || $this->url[1] == 'page') {
+        if ($this->url[1] === '' || $this->url[1] === 'page') {
             $vars['content'] = (new Index())->index();
         } else {
             $vars['content'] = (new $this->url[1]())->index();

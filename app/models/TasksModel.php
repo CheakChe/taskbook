@@ -1,7 +1,7 @@
 <?php
 
 
-class Tasks extends Model
+class TasksModel extends Model
 {
     public function allTask($vars = NULL): array
     {
@@ -12,7 +12,7 @@ class Tasks extends Model
 
     public function countTask()
     {
-        return $this->fetch_assoc('SELECT COUNT(*) AS count FROM `tasks`');
+        return $this->fetch_assoc('SELECT COUNT(*) AS count FROM `tasks`')['count'];
     }
 
     public function saveNew($vars)
@@ -23,5 +23,14 @@ class Tasks extends Model
                         `email`='{$vars['emailNew']}',
                         `task`='{$vars['taskNew']}'
                         ");
+    }
+
+    public function save($vars)
+    {
+        $this->query("UPDATE `tasks` SET 
+                        `name`='{$vars['name']}',
+                        `email`='{$vars['email']}',
+                        `task`='{$vars['task']}'
+                        WHERE `id`='{$vars['id']}'");
     }
 }

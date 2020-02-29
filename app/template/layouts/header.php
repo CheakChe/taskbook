@@ -15,8 +15,14 @@
 <body>
 <header>
     <div class="container-fluid">
-        <div class="row justify-content-center mt-2">
-            <a class="btn btn-dark" href="/users">Авторизиция</a>
+        <div class="row justify-content-around mt-2">
+            <a class="btn btn-dark" <?= $_SERVER['REQUEST_URI'] === '/' ? 'style="pointer-events: none"' : '' ?>
+               href="/">На главную</a>
+            <?php if (!isset($_SESSION['user'])): ?>
+                <a class="btn btn-dark" href="/users">Авторизиция</a>
+            <?php elseif (!empty($vars['nameUser'])): ?>
+                <a class="btn btn-dark" href="/users/logout">Выход</a>
+            <?php endif; ?>
         </div>
     </div>
 </header>

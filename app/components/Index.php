@@ -7,13 +7,15 @@ class Index extends AbstractController
 
     public function __construct()
     {
-        $this->tasks = new Tasks();
+        $this->tasks = new TasksModel();
     }
 
     public function index()
     {
         if ($_POST['save'] === 'new') {
             $this->saveNew();
+        } elseif (isset($_POST['save']) && $_POST['save'] !== 'new') {
+            $this->save();
         }
         $this->sort();
         $paging['count'] = $this->paging();
@@ -28,7 +30,7 @@ class Index extends AbstractController
         return Router::render('main', $data);
     }
 
-    private function saveNew()
+    private function saveNew(): void
     {
         $this->tasks->saveNew(
             [
@@ -40,7 +42,24 @@ class Index extends AbstractController
         $_SESSION['message'][] = 'Задача добавлена.';
     }
 
-    private function sort()
+    public function save()
+    {
+        if (isset($_SESSION['user'])) {
+            $this->tasks->saveNew(
+                [
+                    'name' => $_POST['name'],
+                    'email' => $_POST['email'],
+                    'task' => $_POST['task'],
+                    'id' => $_POST['save']
+                ]
+            );
+            $_SESSION['message'][] = 'Задача сохранена.';
+        } else {
+            $_SESSION['message'][] = 'У вас нет прав для данных действий.';
+        }
+    }
+
+    private function sort(): void
     {
         if (isset($_SESSION['sort']) && $_SESSION['sort'] === 'ORDER BY ' . $_POST['sort']) {
             if (false !== stripos($_SESSION['sort'], 'ASC')) {
