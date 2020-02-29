@@ -27,7 +27,7 @@
                     <div class="tasks__element col-12 d-block flex-wrap">
                         <div class="tasks__info d-lg-flex d-md-block m-2 justify-content-lg-between justify-content-md-center text-md-center text-center">
                             <span class="tasks__number align-self-center col-2">Задание №<?= $item['id'] ?></span>
-                            <div class="tasks__item d-lg-flex d-md-flex justify-content-md-center d-sm-block align-items-center m-2 col-xl-8 ">
+                            <div class="tasks__item d-lg-flex d-md-flex justify-content-md-center d-sm-block align-items-center m-2">
                                 <div class="tasks__input m-2">
                                     <input required type="text" <?= ($_SESSION['user'] ?? 'readonly') ?>
                                            placeholder="Имя"
